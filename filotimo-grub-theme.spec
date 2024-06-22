@@ -1,5 +1,5 @@
 Name:           filotimo-grub-theme
-Version:        0.2
+Version:        0.3
 Release:        1%{?dist}
 Summary:        Filotimo theme for GRUB
 
@@ -29,7 +29,7 @@ Requires:       grub2-efi
 install -pm 0644 %{SOURCE0} LICENSE
 cd src
 mkdir -p %{buildroot}%{_grubthemedir}/filotimo
-cp ./* %{buildroot}%{_grubthemedir}/filotimo
+cp -r ./* %{buildroot}%{_grubthemedir}/filotimo
 
 %post
 cp -af /etc/default/grub /etc/default/grub.bak
@@ -46,6 +46,9 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 %{_grubthemedir}/filotimo
 
 %changelog
+* Sat Jun 22 2024 Thomas Duckworth <tduck973564@gmail.com>
+- Fix %install
+
 * Sat Jun 22 2024 Thomas Duckworth <tduck973564@gmail.com> 0.2-1
 - new package built with tito
 
